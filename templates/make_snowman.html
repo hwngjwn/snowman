@@ -1,0 +1,142 @@
+<html>
+    <head>
+        <title>Snowman</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/snowman.css') }}">
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"/>
+    </head>
+    <body>
+    <container class="container">
+        <header class="bg-danger">
+            <div class="d-flex flex-row justify-content-center">
+                <img height="50px" src="/static/image/로고.PNG">
+            </div>
+            <input id="nickname" type="hidden" value="{{nickname}}">
+        </header>        
+        <section class="d-flex flex-row justify-content-center">
+            <!--
+            <div style="z-index:3"class="background"><img width="375" src="/static/image/background.PNG" ></div>
+            <div style="z-index:1" class="body"><img width="375" src="/static/image/body{{hit_count}}.PNG"></div>
+            <div style="z-index:0" class="hAcc"><img width="375" src="/static/image/hAcc{{head_accessary}}.PNG"></div>
+            <div style="z-index:1" class="head"><img width="375" src="/static/image/head{{hit_count}}.PNG"></div>
+            <div style="z-index:0" class="arm"><img width="375" src="/static/image/arm{{arms}}.PNG"></div>
+            <div style="z-index:0" class="bAcc"><img width="375" src="/static/image/bAcc{{body_accessary}}.PNG"></div>
+            <div style="z-index:0" class="eye"><img width="375" src="/static/image/eye{{eye}}.PNG"></div>
+            <div style="z-index:0" class="nose"><img width="375" src="/static/image/nose{{nose}}.PNG"></div>
+            <div style="z-index:0" class="mouth"><img width="375" src="/static/image/mouth{{mouth}}.PNG"></div>
+            <div style="z-index:2" class="wreath"><img width="375" src="/static/image/wreath.PNG"></div>
+-->
+            <div class="background"><img width="375" src="/static/image/background.PNG" ></div>
+            <div class="body"><img width="375" src="/static/image/body0.PNG"></div>
+            <div class="hAcc"><img width="375" src="/static/image/hAcc{{head_accessary}}.PNG"></div>
+            <div class="head"><img width="375" src="/static/image/head0.PNG"></div>
+            <div class="arm"><img width="375" src="/static/image/arm{{arms}}.PNG"></div>
+            <div class="bAcc"><img width="375" src="/static/image/bAcc{{body_accessary}}.PNG"></div>
+            <div class="eye"><img width="375" src="/static/image/eye{{eye}}.PNG"></div>
+            <div class="nose"><img width="375" src="/static/image/nose{{nose}}.PNG"></div>
+            <div class="mouth"><img width="375" src="/static/image/mouth{{mouth}}.PNG"></div>
+            <div class="wreath"><img width="375" src="/static/image/wreath.PNG"></div>
+            <div class="wAcc"><img width="375" src="/static/image/wAcc{{wreath_accessary}}.PNG"></div>
+        </section>
+            <form method="get" action="/make_snowman">
+                <div class="d-flex justify-content-center mt-4">
+                <select id = "eye" name = "eye" id="eye">
+                    <option value="">눈</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+                <select id = "nose" name="nose" id="nose">
+                    <option value="">코</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+                <select id = "wAcc" name="wAcc" id="hAcc">
+                    <option value="">팔</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+                <select id = "mouth" name="mouth" id="mouth">
+                    <option value="">입</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+                <select id = "hAcc" name="hAcc" id="hAcc">
+                    <option value="">모자</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="1">2</option>
+                </select>
+                <select id = "wAcc" name="wAcc" id="hAcc">
+                    <option value="">리스장식</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="1">2</option>
+                    <option value="1">3</option>
+                </select>
+            </div>
+            <input class="text mt-2 ml-5" id="nickname" placeholder="닉네임">
+            <div class="d-flex justify-content-cenver">
+                <button id="makeBtn" type="button" class="makeBtn button btn-success btn mt-2 ml-5" id='btn'>눈사람 만들기</button>
+            </div>
+            </form>
+        <footer>
+        <div class="names mt-3 small text-secondary">4조 황지원 이다연 박상우 김경수</div>
+        </footer>
+    </container>
+    </body>
+    <script>
+    $(document).ready(function(){ 
+          
+        $("#makeBtn").on("click", function () {
+            var eye = $("#eye").val()
+            var nose = $("#eye").val()
+            var mouth = $("#eye").val()
+            var arms = $("#eye").val()
+            var eye = $("#eye").val()
+
+
+            var nickname_input = $("#nickname_input").val()
+            var message = $("#message").val()
+            fetch('/destroy', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body : JSON.stringify({
+                    "nickname" : nickname,
+                    "nickname_input" : nickname_input,
+                    "message" : message
+                }),
+            })
+            return;
+            $.ajax({
+                    type : "POST",
+                    url : "/destroy",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body : {
+                        "nickname" : nickname,
+                        "nickname_input" : nickname_input,
+                        "message" : message
+                    },
+                    success : function(data){
+                        alert("굿");
+                        location.href= "/show?nickname=" + nickname;
+                    },
+                    error : function(){
+                        alert("nope");                    
+                    }
+                })        
+      });
+    });
+    </script>
+</html>

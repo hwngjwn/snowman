@@ -1,0 +1,32 @@
+
+header{height:50px; display:flex; background-color: white;}
+
+section{height:375px; background-color:white;}
+section > .head{position:absolute; z-index:2;}
+section > .body{position:absolute; z-index:2;}
+section > .eye{position:absolute; z-index:3;}
+section > .nose{position:absolute; z-index:3;}
+section > .mouth{position:absolute; z-index:3;}
+section > .wreath{position:absolute; z-index:1;}
+section > .arm{position:absolute; z-index:2;}
+section > .hAcc{position:absolute; z-index:4;}
+section > .bAcc{position:absolute; z-index:4;}
+section > .wAcc{position:absolute; z-index:2;}
+section > .background{position:absolute; z-index:0;}
+
+input{width:40%;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+}
+textarea{width:80%; height:80px;border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);}
+.message{height:100px; background-color: white;}
+.interaction{height:50px; background-color:white;}
+footer{height:50px; display:flex; background-color:white}
+footer > .names{text-align : center}
